@@ -18,7 +18,8 @@ dependencies:
     - supabase
     - numpy==1.23.5
     - pytorch-lightning==1.8.6
-    - omegaconf==2.0.6
+    - omegaconf==2.1.1
+    - hydra-core==1.1.2
     - torchmetrics==0.9.3
     - torch-geometric==2.3.1
     - fairseq==0.12.2
