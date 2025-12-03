@@ -8,15 +8,10 @@ from torch import FloatTensor
 from torch.utils.data import Dataset, DataLoader
 from torch_geometric.data import Data as PYGGraph
 from dgl.data.utils import load_graphs
-from prefetch_generator import BackgroundGenerator
 
 from .collator import collator, collator_st
 from .utils import get_random_rotation, rotate_uvgrid
 
-
-class DataLoaderX(DataLoader):
-    def __iter__(self):
-        return BackgroundGenerator(super().__iter__())
 
 
 class CADSynth(Dataset):
@@ -103,7 +98,7 @@ class CADSynth(Dataset):
         )
 
     def get_dataloader(self, batch_size, shuffle=True, num_workers=0):
-        return DataLoaderX(
+        return DataLoader(
             dataset=self,
             batch_size=batch_size,
             shuffle=shuffle,
@@ -111,7 +106,6 @@ class CADSynth(Dataset):
             num_workers=num_workers,
             drop_last=True,
             pin_memory=True,
-            prefetch_factor=2,
             persistent_workers=False
         )
 

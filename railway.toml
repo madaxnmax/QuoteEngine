@@ -7,7 +7,7 @@ builder = "nixpacks"
 name = "backend"
 root = "backend"
 buildPath = "backend"
-startCommand = "/bin/bash -c \"conda run --no-capture-output -n brep_mfr uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}\""
+startCommand = "/bin/bash -c \"echo 'STARTING BACKEND DEBUG 123' && conda run --no-capture-output -n brep_mfr uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}\""
 
 [services.build]
 builder = "docker"
