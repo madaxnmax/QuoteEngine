@@ -18,7 +18,7 @@ name = "frontend"
 root = "frontend"
 buildPath = "frontend"
 buildCommand = "npm run build"
-startCommand = "npm run preview -- --host --port $PORT"
+startCommand = "npm run preview -- --host --port ${PORT:-4173}"
 
 [services.build]
 builder = "nixpacks"

@@ -27,4 +27,5 @@ COPY . .
 EXPOSE 8000
 
 # Run the application
-CMD ["conda", "run", "--no-capture-output", "-n", "brep_mfr", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Use shell form to allow variable expansion for PORT
+CMD ["/bin/bash", "-c", "source activate brep_mfr && uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
