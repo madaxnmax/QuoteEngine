@@ -1,0 +1,24 @@
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "echo 'Please deploy backend and frontend services separately'"
+
+[[services]]
+name = "backend"
+root = "backend"
+buildPath = "backend"
+
+[services.build]
+builder = "docker"
+dockerfilePath = "Dockerfile"
+
+[[services]]
+name = "frontend"
+root = "frontend"
+buildPath = "frontend"
+buildCommand = "npm run build"
+startCommand = "npm run preview -- --host --port $PORT"
+
+[services.build]
+builder = "nixpacks"
